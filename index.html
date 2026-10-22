@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="The Referrals: an 80s and 90s cover band from Durham, NC that plays fundraisers for charities.">
+<style>html{color-scheme:light}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>The Referrals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Courier+Prime:wght@400;700&family=Libre+Franklin:wght@400;600;800&display=swap">
+<style>
+/* Layout: a photocopied 90s gig flyer. Grainy xerox paper, condensed poster type, a red rubber stamp,
+   masking tape holding things down, and the setlist as a handwritten mixtape insert.
+   Deliberately single-theme: it is a piece of paper, so it stays paper in dark mode too. */
+:root {
+  --paper: #e3e1da;
+  --paper-2: #f1efe9;
+  --ink: #171615;
+  --smudge: #57534d;
+  --stamp: #b8312a;
+  --tape: #d9c58a;
+  --hi: #f2e24b;
+  --rule: #b7b3aa;
+  --poster: "Anton", "Impact", "Arial Narrow Bold", sans-serif;
+  --marker: "Permanent Marker", "Comic Sans MS", cursive;
+  --type: "Courier Prime", "Courier New", monospace;
+  --body: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html { background: var(--paper); }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; position: relative; }
+#grain { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 20; mix-blend-mode: multiply; opacity: .5; }
+a { color: inherit; }
+:focus-visible { outline: 3px dashed var(--stamp); outline-offset: 3px; }
+
+.wrap { max-width: 1060px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+section { padding-block: 72px; }
+h2 { font-family: var(--poster); font-weight: 400; text-transform: uppercase; font-size: clamp(36px, 6vw, 60px); line-height: 1; letter-spacing: .01em; margin: 0 0 14px; text-wrap: balance; }
+.eyebrow { font-family: var(--type); font-weight: 700; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: var(--stamp); margin: 0 0 8px; }
+.lede { max-width: 60ch; color: var(--smudge); margin: 0; }
+.ph { display: inline-block; font-family: var(--type); font-size: 13px; line-height: 1.3; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; background: var(--hi); color: var(--ink); padding: 0 5px; transform: rotate(-1deg); vertical-align: middle; white-space: nowrap; }
+
+/* Masking tape strip */
+.taped { position: relative; }
+.taped::before { content: ""; position: absolute; top: -12px; left: 50%; width: 88px; height: 24px; margin-left: -44px; background: var(--tape); opacity: .85; transform: rotate(-3deg); box-shadow: 0 1px 1px rgba(0,0,0,.12); }
+
+/* Nav */
+nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 15; background: var(--ink); color: var(--paper-2); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 16; background: var(--ink); }
+nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; }
+.brand { font-family: var(--poster); font-size: 22px; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; }
+nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 22px; margin: 0; padding: 0; font-family: var(--type); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: .08em; }
+nav ul a { text-decoration: none; }
+nav ul a:hover { color: var(--hi); }
+
+/* Hero: the flyer */
+.hero { padding-block: 56px 64px; border-bottom: 3px solid var(--ink); }
+.hero .wrap { display: grid; grid-template-columns: 1fr; gap: 32px; }
+.hero .wrap > * { min-width: 0; }
+.flyer-top { font-family: var(--type); font-weight: 700; font-size: 15px; letter-spacing: .12em; text-transform: uppercase; display: flex; flex-wrap: wrap; gap: 6px 18px; border-block: 2px solid var(--ink); padding-block: 6px; margin-bottom: 18px; }
+.hero h1 { font-family: var(--poster); font-weight: 400; text-transform: uppercase; font-size: clamp(64px, 15vw, 168px); line-height: .86; margin: 0; letter-spacing: -.005em; position: relative; }
+.hero h1 .the { display: block; font-family: var(--marker); text-transform: none; font-size: .3em; line-height: 1; transform: rotate(-4deg); margin: 0 0 1.1em 4px; }
+.stamp { display: inline-block; font-family: var(--poster); text-transform: uppercase; color: var(--stamp); border: 4px solid var(--stamp); padding: 4px 12px 2px; font-size: clamp(20px, 3vw, 28px); letter-spacing: .06em; transform: rotate(-6deg); opacity: .88; margin-top: 18px; }
+.hero-side { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px 40px; border-top: 2px solid var(--ink); padding-top: 24px; }
+.hero-side p { margin: 0; font-size: 19px; font-weight: 600; max-width: 32ch; }
+.hero-side p .scrawl { font-family: var(--marker); font-weight: 400; color: var(--stamp); }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-block; font-family: var(--poster); font-size: 19px; letter-spacing: .05em; text-transform: uppercase; text-decoration: none; padding: 12px 20px; border: 3px solid var(--ink); background: var(--paper-2); color: var(--ink); cursor: pointer; transition: transform .12s; }
+.btn:hover { transform: rotate(-1.5deg) scale(1.03); }
+.btn.primary { background: var(--ink); color: var(--paper-2); }
+
+/* Ticker */
+.ticker { background: var(--ink); color: var(--paper-2); overflow: hidden; }
+.ticker .track { display: flex; gap: 34px; width: max-content; padding-block: 9px; font-family: var(--type); font-weight: 700; font-size: 15px; letter-spacing: .1em; text-transform: uppercase; animation: scroll 55s linear infinite; }
+.ticker .track span::after { content: "///"; color: var(--stamp); margin-left: 34px; }
+@keyframes scroll { to { transform: translateX(-50%); } }
+
+/* About */
+.about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: start; }
+.about-grid > * { min-width: 0; }
+.about-grid p { max-width: 60ch; }
+.members { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 26px 18px; padding-top: 12px; }
+.member { background: var(--paper-2); padding: 10px 10px 12px; box-shadow: 0 2px 0 rgba(0,0,0,.15); }
+.member:nth-child(odd) { transform: rotate(-1.4deg); }
+.member:nth-child(even) { transform: rotate(1.2deg); }
+.member .photo { aspect-ratio: 1; max-width: 100%; background: repeating-linear-gradient(135deg, #c9c6be 0 6px, #bfbbb2 6px 12px); display: grid; place-items: center; font-family: var(--marker); font-size: 15px; color: var(--smudge); margin-bottom: 8px; }
+img.photo { display: block; width: 100%; object-fit: cover; filter: grayscale(1) contrast(1.35) brightness(1.05); }
+.member.wanted { display: block; text-decoration: none; color: var(--ink); background: transparent; border: 2px dashed var(--ink); box-shadow: none; transform: rotate(-2deg); }
+.member.wanted:hover { background: var(--paper-2); }
+.member.wanted .photo { background: transparent; border: 2px solid var(--ink); text-align: center; }
+.member.wanted .photo span { font-family: var(--poster); text-transform: uppercase; font-size: 96px; line-height: 1; color: var(--stamp); transform: rotate(-6deg); }
+.member.wanted .tabs { display: flex; margin-top: 10px; border-top: 2px dashed var(--smudge); }
+.member.wanted .tabs i { flex: 1; font-style: normal; font-family: var(--type); font-size: 10px; text-transform: uppercase; letter-spacing: .06em; writing-mode: vertical-rl; padding: 6px 0; text-align: center; border-right: 1px dashed var(--smudge); }
+.member.wanted .tabs i:last-child { border-right: 0; }
+.member b { display: block; font-family: var(--marker); font-weight: 400; font-size: 17px; }
+.member span { font-family: var(--type); font-size: 13.5px; color: var(--smudge); }
+
+/* Setlist: handwritten mixtape insert */
+.setlist { border-block: 3px solid var(--ink); background: var(--ink); color: var(--paper-2); }
+.setlist .lede { color: #b9b5ad; }
+.setlist .eyebrow { color: var(--hi); }
+.insert { margin-top: 36px; background: var(--paper-2); color: var(--ink); display: grid; grid-template-columns: 1fr 1fr; transform: rotate(-.6deg); box-shadow: 0 10px 0 rgba(0,0,0,.35); }
+.insert-head { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px 20px; padding: 18px 24px 12px; border-bottom: 2px solid var(--ink); }
+.insert-head b { font-family: var(--marker); font-weight: 400; font-size: clamp(24px, 4vw, 34px); line-height: 1.1; }
+.insert-head span { font-family: var(--type); font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--smudge); }
+.side { padding: 18px 24px 26px; min-width: 0; background-image: repeating-linear-gradient(transparent 0 33px, #c4d3e3 33px 34px); background-position: 0 50px; }
+.side + .side { border-left: 2px solid var(--ink); }
+.side h3 { font-family: var(--poster); font-weight: 400; text-transform: uppercase; font-size: 24px; letter-spacing: .04em; margin: 0 0 4px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.side h3 .mood { font-family: var(--marker); text-transform: none; font-size: 18px; color: var(--stamp); letter-spacing: 0; }
+.side ol { list-style: none; margin: 6px 0 0; padding: 0; counter-reset: t; }
+.side li { counter-increment: t; display: grid; grid-template-columns: 2.1em 1fr; gap: 6px; padding: 5px 0; line-height: 1.3; }
+.side li::before { content: counter(t) "."; font-family: var(--type); font-weight: 700; font-size: 15px; color: var(--smudge); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.side li div { font-family: var(--marker); font-size: 17px; }
+.side li i { font-style: normal; font-family: var(--type); font-size: 13px; color: var(--smudge); margin-left: 6px; }
+.insert-foot { grid-column: 1 / -1; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 10px 24px; border-top: 2px solid var(--ink); font-family: var(--type); font-weight: 700; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
+
+/* Shows */
+.shows-list { margin-top: 30px; border-top: 3px solid var(--ink); }
+.show { display: grid; grid-template-columns: 120px 1fr auto; gap: 20px; align-items: center; padding: 16px 0; border-bottom: 1px dashed var(--smudge); }
+.show > div { min-width: 0; }
+.date { font-family: var(--poster); font-size: 34px; line-height: 1; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+.date small { font-family: var(--type); font-size: 14px; font-weight: 700; letter-spacing: .1em; display: block; color: var(--smudge); margin-top: 4px; }
+.show h3 { margin: 0; font-size: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: .01em; }
+.show p { margin: 2px 0 0; color: var(--smudge); font-family: var(--type); font-size: 14.5px; }
+.chip { font-family: var(--poster); font-size: 16px; letter-spacing: .08em; text-transform: uppercase; padding: 2px 10px; border: 3px solid currentColor; transform: rotate(-4deg); white-space: nowrap; }
+.chip.public { color: var(--stamp); }
+.chip.private { color: var(--smudge); }
+
+/* Booking */
+.book-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: start; }
+.book-grid > * { min-width: 0; }
+.contact-lines { display: grid; gap: 14px; margin-top: 26px; }
+.contact-lines div { display: grid; gap: 0; }
+.contact-lines small { font-family: var(--type); font-weight: 700; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--smudge); }
+.contact-lines b { font-size: 19px; overflow-wrap: anywhere; }
+form { background: var(--paper-2); color: var(--ink); padding: 28px 22px 22px; display: grid; gap: 14px; box-shadow: 0 3px 0 rgba(0,0,0,.18); transform: rotate(.5deg); }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+label { display: grid; gap: 2px; font-family: var(--type); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+input, select, textarea { font: 16px var(--body); padding: 8px 2px; border: 0; border-bottom: 2px solid var(--ink); background: transparent; color: var(--ink); border-radius: 0; width: 100%; text-transform: none; letter-spacing: 0; }
+select { padding-inline: 0; }
+input:focus, select:focus, textarea:focus { outline: none; border-bottom-color: var(--stamp); background: rgba(242,226,75,.25); }
+textarea { min-height: 96px; resize: vertical; border: 2px solid var(--ink); padding: 8px; }
+.form-note { font-family: var(--type); font-size: 13px; color: var(--smudge); margin: 0; }
+.sent { font-family: var(--marker); font-size: 18px; color: var(--stamp); }
+
+footer { padding-block: 26px; background: var(--ink); color: #b9b5ad; }
+footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; font-family: var(--type); font-size: 14px; }
+footer .brand { color: var(--paper-2); font-size: 18px; }
+
+@media (max-width: 760px) {
+  section { padding-block: 52px; }
+  nav ul { display: none; }
+  .hero .wrap, .about-grid, .book-grid, .insert { grid-template-columns: 1fr; }
+  .side + .side { border-left: 0; border-top: 2px solid var(--ink); }
+  .insert { transform: none; }
+  .show { grid-template-columns: 84px 1fr; gap: 14px; }
+  .show .chip { grid-column: 2; justify-self: start; }
+  .date { font-size: 28px; }
+  .row2 { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ticker .track { animation: none; }
+  .btn { transition: none; }
+}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=VT323&family=Archivo:wght@400;600;800&display=swap">
+<style>
+/* Option: VHS '92. A taped-off-MTV alt-rock video: scanlines, RGB-split type, REC and PLAY overlays, handwritten VHS label setlist. */
+:root {
+  --paper: #0a0a0f; --paper-2: #15151d; --ink: #f1f1f1; --smudge: #9b9bab; --stamp: #ff2b2b;
+  --tape: #f1f1f1; --hi: #19e3ff; --night: #000;
+  --poster: "Archivo Black", "Arial Black", Impact, sans-serif;
+  --type: "VT323", "Courier New", monospace;
+  --body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: dark;
+}
+#grain { opacity: .08; mix-blend-mode: screen; }
+body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 21; background: repeating-linear-gradient(rgba(0,0,0,.22) 0 1px, transparent 1px 3px); }
+h2 { font-size: clamp(32px, 5vw, 52px); text-shadow: -2px 0 var(--stamp), 2px 0 var(--hi); }
+.eyebrow { font-family: var(--type); font-size: 22px; font-weight: 400; color: var(--hi); letter-spacing: .1em; }
+.eyebrow::before { content: "\25B6  "; }
+nav, body::before, .ticker, footer { background: var(--night); color: var(--ink); }
+.hero { position: relative; border-bottom: 1px solid #2a2a35; background: radial-gradient(ellipse at 50% 40%, #1a1a2a, var(--paper) 70%); }
+.hero::before { content: "\25CF REC"; position: absolute; top: 20px; right: max(16px, env(safe-area-inset-right, 0px)); font-family: var(--type); font-size: 28px; color: var(--stamp); animation: blink 1.2s steps(2) infinite; }
+.hero::after { content: "SP  0:19:92"; position: absolute; bottom: 18px; right: max(16px, env(safe-area-inset-right, 0px)); font-family: var(--type); font-size: 24px; color: var(--ink); opacity: .8; }
+@keyframes blink { 50% { opacity: 0; } }
+.flyer-top { font-family: var(--type); font-size: 22px; font-weight: 400; border: 0; color: var(--ink); }
+.flyer-top::before { content: "\25B6 PLAY"; color: var(--hi); }
+.hero h1 { font-size: clamp(42px, 11vw, 150px); line-height: .92; text-shadow: -4px 0 var(--stamp), 4px 0 var(--hi); letter-spacing: -.01em; }
+.hero h1 .the { font-family: var(--type); text-transform: uppercase; color: var(--hi); text-shadow: none; transform: none; font-size: .2em; margin-bottom: .4em; }
+.stamp { font-family: var(--type); font-size: 26px; color: var(--ink); background: var(--stamp); border: 0; transform: none; opacity: 1; padding: 2px 12px; }
+.hero-side { border-color: #2a2a35; }
+.hero-side p .scrawl { color: var(--hi); }
+.btn { font-family: var(--type); font-size: 24px; letter-spacing: .06em; border: 2px solid var(--ink); background: transparent; color: var(--ink); }
+.btn.primary { background: var(--ink); color: var(--night); }
+.btn:hover { transform: none; box-shadow: -3px 0 var(--stamp), 3px 0 var(--hi); }
+.ticker .track { font-family: var(--type); font-size: 22px; font-weight: 400; }
+.ticker .track span::after { content: "\25B8\25B8"; color: var(--stamp); }
+.taped::before { display: none; }
+.member, .member:nth-child(odd), .member:nth-child(even) { transform: none; background: var(--paper-2); box-shadow: none; }
+img.photo { filter: contrast(1.2) saturate(1.3) hue-rotate(-8deg); box-shadow: -3px 0 rgba(255,43,43,.6), 3px 0 rgba(25,227,255,.6); }
+.member b { font-family: var(--poster); font-size: 16px; text-transform: uppercase; }
+.member span { font-family: var(--type); font-size: 18px; }
+.member.wanted, .member.wanted:hover { border: 2px dashed #3a3a48; background: transparent; transform: none; color: var(--ink); }
+.member.wanted .photo { border: 0; background: repeating-linear-gradient(90deg, #fff 0 12%, #ff0 12% 25%, #0ff 25% 37%, #0f0 37% 50%, #f0f 50% 62%, #f00 62% 75%, #00f 75% 87%, #111 87% 100%); }
+.member.wanted .photo span { color: var(--night); background: var(--ink); padding: 0 14px; font-family: var(--poster); font-size: 64px; transform: none; }
+.member.wanted .tabs { display: none; }
+.setlist { background: var(--night); color: var(--ink); border-color: #2a2a35; }
+.setlist .lede { color: var(--smudge); }
+.insert { background: #f6f6f0; color: #111; transform: none; box-shadow: 0 0 0 14px #1d1d24, 0 0 0 16px #33333f; margin-inline: 16px; }
+.insert-head { background: repeating-linear-gradient(90deg, var(--stamp) 0 30%, #ff9d00 30% 60%, #ffe100 60% 100%); }
+.insert-head b, .insert-head span { color: #111; }
+.side { background-image: none; }
+.side li div { font-size: 18px; }
+.shows-list { border-color: #2a2a35; }
+.show { border-bottom: 1px solid #2a2a35; }
+.date { font-family: var(--type); font-size: 40px; color: var(--hi); }
+.date small { font-size: 18px; }
+.show h3 { font-family: var(--poster); font-weight: 400; }
+.show p { font-family: var(--type); font-size: 19px; }
+.chip { font-family: var(--type); font-size: 20px; transform: none; border-width: 2px; }
+form { transform: none; background: var(--paper-2); box-shadow: none; border: 1px solid #2a2a35; }
+label { font-family: var(--type); font-size: 19px; font-weight: 400; }
+input, select, textarea { border-color: #4a4a58; }
+.form-note { font-family: var(--type); font-size: 17px; }
+footer, footer .wrap { font-family: var(--type); font-size: 18px; color: var(--smudge); }
+@media (prefers-reduced-motion: reduce) { .hero::before { animation: none; } }
+@media (max-width: 760px) { .hero::before { top: 8px; font-size: 22px; } .hero::after { font-size: 18px; bottom: 8px; } }
+</style>
+
+</head>
+<body>
+<canvas id="grain" aria-hidden="true"></canvas>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">The Referrals</a>
+    <ul>
+      <li><a href="#about">Band</a></li>
+      <li><a href="#setlist">Setlist</a></li>
+      <li><a href="#shows">Shows</a></li>
+      <li><a href="#book">Fundraisers</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="flyer-top"><span>Live</span><span>80s / 90s / &amp; then some</span><span>For good causes</span><span>Durham, NC</span><span>Est. 2020</span></div>
+      <h1><span class="the">the</span>Referrals</h1>
+      <div class="stamp">Now accepting referrals</div>
+    </div>
+    <div class="hero-side">
+      <p>Pearl Jam, Oasis, The Cure, The Clash and the rest of the mixtape you wore out. <span class="scrawl">Played loud, sung back louder.</span></p>
+      <div class="cta-row">
+        <a class="btn primary" href="#book">Bring us to your fundraiser</a>
+        <a class="btn" href="#setlist">See the setlist</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="track">
+    <span>Interstate Love Song</span><span>Just Like Heaven</span><span>Champagne Supernova</span><span>Hey Ya!</span><span>1979</span><span>Should I Stay or Should I Go</span><span>Better Man</span><span>Take On Me</span><span>No Rain</span><span>A Long December</span>
+    <span>Interstate Love Song</span><span>Just Like Heaven</span><span>Champagne Supernova</span><span>Hey Ya!</span><span>1979</span><span>Should I Stay or Should I Go</span><span>Better Man</span><span>Take On Me</span><span>No Rain</span><span>A Long December</span>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <p class="eyebrow">The band</p>
+      <h2>Highly recommended by people who were there.</h2>
+      <p>The Referrals play the songs from the mixtapes, the dorm rooms and the car radio, start to finish, with the volume where it belongs. Grunge and Britpop, college radio and new wave, plus a few newer songs that earned a spot on the tape.</p>
+      <p>Right now we're a three-piece: vocals and guitar, bass, and drums. We're always open to new folks joining in. If you know these songs and want to play, <a href="#book">get in touch</a>.</p>
+      <p>We only play fundraisers, for charities and causes we believe in. Every show is a benefit, and most of them come the way our name suggests: someone saw us, then told a friend about a cause that needed a night out. <span class="ph">Add the charities you've played for</span></p>
+    </div>
+    <div class="members">
+      <div class="member taped"><img class="photo" src="img/jeff-quinn.jpg" alt="Jeff Quinn singing and playing guitar on stage"><b>Jeff Quinn</b><span>Vocals, guitar</span></div>
+      <div class="member taped"><img class="photo" src="img/jorge-guerrero.jpg" alt="Jorge Guerrero playing bass on stage"><b>Jorge Guerrero</b><span>Bass</span></div>
+      <div class="member taped"><img class="photo" src="img/brad-gorbet.jpg" alt="Brad Gorbet playing drums at an outdoor show"><b>Brad Gorbet</b><span>Drums</span></div>
+      <a class="member wanted" href="#book"><div class="photo"><span>?</span></div><b>Could be you</b><span>Open to new folks too</span><div class="tabs" aria-hidden="true"><i>call us</i><i>call us</i><i>call us</i><i>call us</i></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="setlist" id="setlist">
+  <div class="wrap">
+    <p class="eyebrow">The setlist</p>
+    <h2>Side A turns it up. Side B brings the lighters out.</h2>
+    <p class="lede">90s alt-rock, 80s new wave, and a few newer favorites we couldn't leave off the tape. Requests welcome at every show.</p>
+    <div class="insert taped">
+      <div class="insert-head"><b>The Referrals: live mix</b><span>C-90 · Do not tape over</span></div>
+      <div class="side a">
+        <h3>Side A <span class="mood">turn it up</span></h3>
+        <ol>
+          <li><div>Interstate Love Song<i>Stone Temple Pilots '94</i></div></li>
+          <li><div>Rebel Rebel<i>David Bowie '74</i></div></li>
+          <li><div>Should I Stay or Should I Go<i>The Clash '82</i></div></li>
+          <li><div>Blister in the Sun<i>Violent Femmes '83</i></div></li>
+          <li><div>Fell in Love with a Girl<i>The White Stripes '01</i></div></li>
+          <li><div>Undone (The Sweater Song)<i>Weezer '94</i></div></li>
+          <li><div>1979<i>The Smashing Pumpkins '96</i></div></li>
+          <li><div>Hey Ya!<i>Outkast '03</i></div></li>
+          <li><div>Take On Me<i>a-ha '85</i></div></li>
+          <li><div>Just Like Heaven<i>The Cure '87</i></div></li>
+          <li><div>Everybody Wants to Rule the World<i>Tears for Fears '85</i></div></li>
+          <li><div>Dreams<i>The Cranberries '92</i></div></li>
+          <li><div>No Rain<i>Blind Melon '92</i></div></li>
+          <li><div>As It Was<i>Harry Styles '22</i></div></li>
+        </ol>
+      </div>
+      <div class="side b">
+        <h3>Side B <span class="mood">lighters up</span></h3>
+        <ol>
+          <li><div>Champagne Supernova<i>Oasis '95</i></div></li>
+          <li><div>High and Dry<i>Radiohead '95</i></div></li>
+          <li><div>Elderly Woman Behind the Counter in a Small Town<i>Pearl Jam '93</i></div></li>
+          <li><div>Better Man<i>Pearl Jam '94</i></div></li>
+          <li><div>A Long December<i>Counting Crows '96</i></div></li>
+          <li><div>Everybody Hurts<i>R.E.M. '92</i></div></li>
+          <li><div>Clocks<i>Coldplay '02</i></div></li>
+          <li><div>Green Eyes<i>Coldplay '02</i></div></li>
+          <li><div>Hard Sun<i>Eddie Vedder '07</i></div></li>
+          <li><div>The Needle and the Damage Done<i>Neil Young, via Pretenders</i></div></li>
+          <li><div>To Be Young (Is to Be Sad, Is to Be High)<i>Ryan Adams '00</i></div></li>
+          <li><div>Chicago<i>Sufjan Stevens '05</i></div></li>
+          <li><div>We're Going to Be Friends<i>The White Stripes '01</i></div></li>
+        </ol>
+      </div>
+      <div class="insert-foot"><span>27 tracks</span><span>Requests welcome</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="shows">
+  <div class="wrap">
+    <p class="eyebrow">Upcoming shows</p>
+    <h2>Upcoming benefits</h2>
+    <p class="lede">Come for the songs, stay for the cause. <span class="ph">Example dates</span></p>
+    <div class="shows-list">
+      <div class="show">
+        <div class="date">Nov 07<small>Sat</small></div>
+        <div><h3>Benefit for charity name</h3><p>Venue name · Durham, NC · Doors 8:00 PM · Suggested donation</p></div>
+        <span class="chip public">Benefit</span>
+      </div>
+      <div class="show">
+        <div class="date">Nov 21<small>Sat</small></div>
+        <div><h3>Charity name fundraiser</h3><p>Venue name · Durham, NC · 7:30 PM · All ages</p></div>
+        <span class="chip public">Benefit</span>
+      </div>
+      <div class="show">
+        <div class="date">Dec 05<small>Sat</small></div>
+        <div><h3>Holiday drive for charity name</h3><p>Durham, NC · Bring a donation for the drive</p></div>
+        <span class="chip public">Benefit</span>
+      </div>
+      <div class="show">
+        <div class="date">Dec 31<small>Thu</small></div>
+        <div><h3>New Year's Eve benefit</h3><p>Venue name · Durham, NC · Tickets link here, proceeds to charity name</p></div>
+        <span class="chip public">Benefit</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="wrap book-grid">
+    <div>
+      <p class="eyebrow">Fundraisers</p>
+      <h2>Got a good cause? Refer it to us.</h2>
+      <p class="lede">We play benefits for charities we support. Tell us about the cause, the date and the place, and we'll let you know if it's a fit, usually within two days.</p>
+      <div class="contact-lines">
+        <div><small>Email</small><b>bgorbet@gmail.com</b></div>
+        <div><small>Phone / text</small><b>(415) 335-0187</b></div>
+      </div>
+    </div>
+    <form id="book-form" class="taped" name="booking" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="booking">
+      <p hidden><label>Leave this empty <input name="bot-field"></label></p>
+      <div class="row2">
+        <label for="f-name">Your name<input id="f-name" name="name" autocomplete="name" required></label>
+        <label for="f-email">Email<input id="f-email" name="email" type="email" autocomplete="email" required></label>
+      </div>
+      <div class="row2">
+        <label for="f-date">Event date<input id="f-date" name="date" type="date"></label>
+        <label for="f-type">What's this about?
+          <select id="f-type" name="type">
+            <option>Charity fundraiser</option><option>Benefit concert</option><option>Community event</option><option>I want to play with you</option><option>Other</option>
+          </select>
+        </label>
+      </div>
+      <label for="f-msg">Tell us about it<textarea id="f-msg" name="message" placeholder="The charity or cause, venue, expected crowd, who referred you..."></textarea></label>
+      <button class="btn primary" type="submit">Send request</button>
+      <p class="form-note">Goes straight to the band. We usually reply within two days.</p>
+      <div class="sent" id="sent" hidden>Thanks! Your request is in. We'll be in touch soon.</div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="brand">The Referrals</span>
+    <span>Cover band for good causes · Based in Durham, NC</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('book-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var f = this, btn = f.querySelector('button[type=submit]');
+  btn.disabled = true;
+  fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(new FormData(f)).toString() })
+    .then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      f.reset(); document.getElementById('sent').hidden = false;
+    })
+    .catch(function () { alert('Sorry, that didn\'t go through. Please email bgorbet@gmail.com instead.'); })
+    .then(function () { btn.disabled = false; });
+});
+
+// Photocopy grain: one static noise tile, tiled across the viewport.
+(function () {
+  var c = document.getElementById('grain');
+  var tile = document.createElement('canvas');
+  tile.width = tile.height = 160;
+  var t = tile.getContext('2d'), img = t.createImageData(160, 160);
+  for (var i = 0; i < img.data.length; i += 4) {
+    var v = Math.random() < 0.5 ? 255 : 150 + Math.random() * 105;
+    img.data[i] = img.data[i + 1] = img.data[i + 2] = v; img.data[i + 3] = 255;
+  }
+  t.putImageData(img, 0, 0);
+  function draw() {
+    var dpr = window.devicePixelRatio || 1;
+    c.width = innerWidth * dpr; c.height = innerHeight * dpr;
+    var ctx = c.getContext('2d');
+    ctx.fillStyle = ctx.createPattern(tile, 'repeat');
+    ctx.fillRect(0, 0, c.width, c.height);
+  }
+  draw();
+  addEventListener('resize', draw);
+})();
+</script>
+
+</body>
+</html>
